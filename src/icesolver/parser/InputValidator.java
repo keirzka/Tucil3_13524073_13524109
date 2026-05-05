@@ -19,11 +19,11 @@ public class InputValidator {
         List<String> peringatan = new ArrayList<>();
         Cell tileMulai = papan.tileAt(papan.mulai);
         if (tileMulai == Cell.TEMBOK || tileMulai == Cell.LAVA) {
-            kesalahan.add("Posisi MULAI " + papan.mulai + " berada di tile yang tidak bisa dilewati: " + tileMulai);
+            kesalahan.add("Posisi mulai " + papan.mulai + " berada di tile yang tidak bisa dilewati: " + tileMulai);
         }
         Cell tileTujuan = papan.tileAt(papan.tujuan);
         if (tileTujuan == Cell.TEMBOK || tileTujuan == Cell.LAVA) {
-            kesalahan.add("Posisi TUJUAN " + papan.tujuan + " berada di tile yang tidak bisa dilewati: " + tileTujuan);
+            kesalahan.add("Posisi tujuan " + papan.tujuan + " berada di tile yang tidak bisa dilewati: " + tileTujuan);
         }
         for (int b = 0; b < papan.baris; b++) {
             for (int k = 0; k < papan.kolom; k++) {
@@ -43,7 +43,7 @@ public class InputValidator {
             if (papan.tileAt(b, papan.kolom - 1) != Cell.TEMBOK) peringatanBorder = true;
         }
         if (peringatanBorder) {
-            peringatan.add("Border papan mengandung tile non-TEMBOK. Aktor bisa jatuh dari tepi papan.");
+            peringatan.add("Border papan mengandung tile nontembok. Pemain bisa jatuh dari tepi papan.");
         }
         for (int i = 0; i < papan.totalCheckpoints(); i++) {
             Position cp = papan.checkpoints[i];

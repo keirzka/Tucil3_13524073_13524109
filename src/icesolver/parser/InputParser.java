@@ -39,10 +39,10 @@ public class InputParser {
                 }
                 grid[b][k] = tile;
                 if (tile == Cell.MULAI) {
-                    if (mulai != null) throw new IOException("Ditemukan lebih dari satu tile MULAI (Z)");
+                    if (mulai != null) throw new IOException("Ditemukan lebih dari satu tile mulai (Z)");
                     mulai = new Position(b, k);
                 } else if (tile == Cell.TUJUAN) {
-                    if (tujuan != null) throw new IOException("Ditemukan lebih dari satu tile TUJUAN (O)");
+                    if (tujuan != null) throw new IOException("Ditemukan lebih dari satu tile tujuan (O)");
                     tujuan = new Position(b, k);
                 } else if (tile.isCheckpoint()) {
                     int idx = tile.indeksCheckpoint();
@@ -61,13 +61,13 @@ public class InputParser {
                 try {
                     biaya[b][k] = Integer.parseInt(token[k]);
                 } catch (NumberFormatException e) {
-                    throw new IOException("Biaya tidak valid pada baris=" + b + " kolom=" + k);
+                    throw new IOException("Biaya tidak valid pada baris=" + b + " kolom =" + k);
                 }
             }
         }
         Position[] checkpoints = buatArrayCheckpoint(petaCheckpoint);
-        if (mulai == null) throw new IOException("Tile MULAI (Z) tidak ditemukan");
-        if (tujuan == null) throw new IOException("Tile TUJUAN (O) tidak ditemukan");
+        if (mulai == null) throw new IOException("Tile mulai (Z) tidak ditemukan");
+        if (tujuan == null) throw new IOException("Tile tujuan (O) tidak ditemukan");
         return new Board(grid, biaya, mulai, tujuan, checkpoints);
     }
 
@@ -76,7 +76,7 @@ public class InputParser {
         int idxMaks = Collections.max(peta.keySet());
         for (int i = 0; i <= idxMaks; i++) {
             if (!peta.containsKey(i)) {
-                throw new IOException("Checkpoint '" + i + "' tidak ditemukan — indeks harus berurutan dari 0");
+                throw new IOException("Checkpoint '" + i + "' tidak ditemukan, indeks harus berurutan dari 0");
             }
         }
         Position[] arr = new Position[idxMaks + 1];
