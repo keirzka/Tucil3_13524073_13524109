@@ -3,11 +3,11 @@ import icesolver.model.*;
 import icesolver.movement.*;
 import java.util.*;
 
-public class UCSSolver extends Solver {
+public class BFSSolver extends Solver {
     @Override
     public HasilSolusi selesaikan(Board papan) {
-        PriorityQueue<Node> antrian = new PriorityQueue<>();
-        Map<State, Integer> dikunjungi = new HashMap<>();
+        Queue<Node> antrian = new LinkedList<>();
+        Set<State> dikunjungi = new HashSet<>();
         State statusAwal = new State(papan.mulai, 0);
         Node nodeAwal = new Node(statusAwal);
         antrian.add(nodeAwal);
@@ -18,10 +18,10 @@ public class UCSSolver extends Solver {
         while (!antrian.isEmpty()) {
             Node saat = antrian.poll();
             State status = saat.status;
-            if (dikunjungi.containsKey(status) && dikunjungi.get(status) <= saat.biayaG) {
+            if (dikunjungi.contains(status)) {
                 continue;
             }
-            dikunjungi.put(status, saat.biayaG);
+            dikunjungi.add(status);
             iterasi++;
             if (status.isTujuan(papan)) {
                 List<Direction> jalur = saat.rekonstruksiJalur();
@@ -39,10 +39,10 @@ public class UCSSolver extends Solver {
                 State statusBaru = MovementEngine.terapkanGerak(papan, status, arah);
                 if (statusBaru == null) continue;
                 int biayaBaru = saat.biayaG + hasilGerak.biayaGerak;
-                if (dikunjungi.containsKey(statusBaru) && dikunjungi.get(statusBaru) <= biayaBaru) {
+                if (dikunjungi.contains(statusBaru)) {
                     continue;
                 }
-                Node anak = new Node(statusBaru, biayaBaru, biayaBaru, saat, arah);
+                Node anak = new Node(statusBaru, biayaBaru, 0, saat, arah);
                 antrian.add(anak);
             }
         }
@@ -56,6 +56,6 @@ public class UCSSolver extends Solver {
 
     @Override
     public String namaAlgoritma() { 
-        return "UCS"; 
+        return "BFS"; 
     }
 }

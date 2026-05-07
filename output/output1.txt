@@ -1,0 +1,6 @@
+=========== HASIL PENCARIAN ===========
+Algoritma : UCS
+Hasil pencarian jalur : DR
+Total biaya : 4
+Jumlahi terasi : 4
+Waktu eksekusi : 0

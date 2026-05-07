@@ -1,15 +1,22 @@
 package icesolver.solver;
+import icesolver.heuristic.*;
 import icesolver.model.*;
 import icesolver.movement.*;
 import java.util.*;
 
-public class UCSSolver extends Solver {
+public class AStarSolver extends Solver {
+    private final Heuristic heuristic;
+
+    public AStarSolver(Heuristic heuristic){
+        this.heuristic = heuristic;
+    }
+
     @Override
     public HasilSolusi selesaikan(Board papan) {
         PriorityQueue<Node> antrian = new PriorityQueue<>();
         Map<State, Integer> dikunjungi = new HashMap<>();
         State statusAwal = new State(papan.mulai, 0);
-        Node nodeAwal = new Node(statusAwal);
+        Node nodeAwal = new Node(statusAwal, 0, this.heuristic.perkiraan(statusAwal, papan), null, null);
         antrian.add(nodeAwal);
         int iterasi = 0;
 
@@ -42,7 +49,8 @@ public class UCSSolver extends Solver {
                 if (dikunjungi.containsKey(statusBaru) && dikunjungi.get(statusBaru) <= biayaBaru) {
                     continue;
                 }
-                Node anak = new Node(statusBaru, biayaBaru, biayaBaru, saat, arah);
+                double biayaF = biayaBaru + this.heuristic.perkiraan(statusBaru, papan);
+                Node anak = new Node(statusBaru, biayaBaru, biayaF, saat, arah);
                 antrian.add(anak);
             }
         }
@@ -56,6 +64,6 @@ public class UCSSolver extends Solver {
 
     @Override
     public String namaAlgoritma() { 
-        return "UCS"; 
+        return "A*"; 
     }
 }
