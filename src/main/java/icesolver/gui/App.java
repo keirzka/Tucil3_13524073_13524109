@@ -46,7 +46,7 @@ public class App extends Application {
         algoritmaLabel.getStyleClass().add("section-label");
         ComboBox<String> pilihanAlgoritma = new ComboBox<>(FXCollections.observableArrayList(
                 "Uniform Cost Search (UCS)",
-                "Greedy Best First Searc (GBFS)",
+                "Greedy Best First Search (GBFS)",
                 "A Star (A*)",
                 "Breadth First Search (BFS)"));
         pilihanAlgoritma.setValue("Pilih Algoritma");
@@ -67,7 +67,7 @@ public class App extends Application {
         pilihanHeuristic.setVisible(false);
         pilihanAlgoritma.setOnAction(e -> {
             String selected = pilihanAlgoritma.getValue();
-            boolean isHeuristicNeeded = "Greedy Best First Searc (GBFS)".equals(selected) || "A Star (A*)".equals(selected);
+            boolean isHeuristicNeeded = "Greedy Best First Search (GBFS)".equals(selected) || "A Star (A*)".equals(selected);
             heuristicLabel.setVisible(isHeuristicNeeded);
             pilihanHeuristic.setVisible(isHeuristicNeeded);
         });
@@ -178,7 +178,9 @@ public class App extends Application {
                 return;
             }
 
-            if (pilihanHeuristic.getValue() == null || pilihanHeuristic.getValue().equals("Pilih Heuristic")) {
+            boolean butuhHeuristic = pilihanAlgoritma.getValue().equals("Greedy Best First Search (GBFS)") || pilihanAlgoritma.getValue().equals("A Star (A*)");
+
+            if (butuhHeuristic && (pilihanHeuristic.getValue() == null || pilihanHeuristic.getValue().equals("Pilih Heuristic"))) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Silakan pilih jenis heuristic terlebih dahulu!");
                 alert.showAndWait();
