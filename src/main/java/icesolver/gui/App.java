@@ -1,50 +1,63 @@
 package icesolver.gui;
 
 import icesolver.model.Board;
+import icesolver.output.FileOutput;
 import icesolver.parser.InputParser;
 import icesolver.solver.Solver;
-import icesolver.output.FileOutput;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.Separator;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import javax.swing.*;
 
 public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        // Header
-        Label judul = new Label("Ice Sliding Puzzle Solver ");
-        judul.setStyle("-fx-font-size: 30px; -fx-font-weight: bold;");
-        judul.setMaxWidth(Double.MAX_VALUE);
-        judul.setAlignment(Pos.CENTER);
-
         // =========== INPUT UI ============
+        Label judulInput = new Label("Ice Sliding Puzzle Solver ");
+        judulInput.getStyleClass().add("title-label");
+        judulInput.setMaxWidth(Double.MAX_VALUE);
+        judulInput.setAlignment(Pos.CENTER);
 
         // INPUT FILE
         Label inputLabel = new Label("Konfigurasi Papan (.txt)");
-        inputLabel.setStyle("-fx-font-weight: bold;");
+        inputLabel.getStyleClass().add("section-label");
         Button btnFile = new Button("[Choose file]");
         Label fileNameLabel = new Label("Belum ada file terpilih");
+        fileNameLabel.setStyle("-fx-text-fill: #4B5563;" + "-fx-font-size: 14px;");
+
 
         // PILIHAN ALGORITMA
         Label algoritmaLabel = new Label("Jenis Algoritma");
-        algoritmaLabel.setStyle("-fx-font-weight: bold;");
-        ComboBox<String> pilihanAlgoritma = new ComboBox<>(FXCollections.observableArrayList("UCS", "GBFS", "A*", "BFS"));
+        algoritmaLabel.getStyleClass().add("section-label");
+        ComboBox<String> pilihanAlgoritma = new ComboBox<>(FXCollections.observableArrayList(
+                "Uniform Cost Search (UCS)",
+                "Greedy Best First Searc (GBFS)",
+                "A Star (A*)",
+                "Breadth First Search (BFS)"));
         pilihanAlgoritma.setValue("Pilih Algoritma");
+        pilihanAlgoritma.setStyle("-fx-background-color: #ff79c5;");
 
         // PILIHAN HEURISTIC untuk GBFS dan A*
-        Label heuristicLabel = new Label("Pilih jenis heuristic yang tersedia");
-        heuristicLabel.setStyle("-fx-font-weight: bold;");
-        ComboBox<String> pilihanHeuristic = new ComboBox<>(FXCollections.observableArrayList("H1", "H2", "H3"));
+        Label heuristicLabel = new Label("Jenis Heuristic");
+        heuristicLabel.getStyleClass().add("section-label");
+        ComboBox<String> pilihanHeuristic = new ComboBox<>(FXCollections.observableArrayList(
+            "H1 : Heuristic Manhattan", 
+            "H2 : Heuristic Checkpoint", 
+            "H3 : Heuristic Advanced"));
         pilihanHeuristic.setValue("Pilih Heuristic");
 
 
@@ -53,7 +66,7 @@ public class App extends Application {
         pilihanHeuristic.setVisible(false);
         pilihanAlgoritma.setOnAction(e -> {
             String selected = pilihanAlgoritma.getValue();
-            boolean isHeuristicNeeded = "GBFS".equals(selected) || "A*".equals(selected);
+            boolean isHeuristicNeeded = "Greedy Best First Searc (GBFS)".equals(selected) || "A Star (A*)".equals(selected);
             heuristicLabel.setVisible(isHeuristicNeeded);
             pilihanHeuristic.setVisible(isHeuristicNeeded);
         });
@@ -74,7 +87,7 @@ public class App extends Application {
 
         // Tombol Solver
         Button btnSolver = new Button("Run Ice Solver");
-        btnSolver.setStyle("-fx-font-size: 16px; -fx-font-weight: bold");
+        btnSolver.getStyleClass().add("main-button");
         btnSolver.setAlignment(Pos.CENTER);
         HBox tombolBox = new HBox(btnSolver);
         tombolBox.setAlignment(Pos.CENTER);
@@ -87,25 +100,32 @@ public class App extends Application {
         VBox.setMargin(heuristicLabel, new Insets(20, 0, 0, 0));
         VBox.setMargin(btnSolver, new Insets(30, 0, 30, 0));
         Scene sceneInput = new Scene(InputUI, 800, 600);
-        InputUI.getChildren().addAll(judul, new Separator(), inputLabel, btnFile, fileNameLabel, algoritmaLabel, pilihanAlgoritma, heuristicLabel, pilihanHeuristic, tombolBox);
-
+        InputUI.getChildren().addAll(judulInput, new Separator(), inputLabel, btnFile, fileNameLabel, algoritmaLabel, pilihanAlgoritma, heuristicLabel, pilihanHeuristic, tombolBox);
+        sceneInput.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         // =========== Output UI ============
+        Label judulOutput = new Label("Ice Sliding Puzzle Solver ");
+        judulOutput.getStyleClass().add("title-label");
+        judulOutput.setMaxWidth(Double.MAX_VALUE);
+        judulOutput.setAlignment(Pos.CENTER);
+
         Label labelResult = new Label("Hasil Pencarian Path");
-        labelResult.setStyle("-fx-font-size: 16px; -fx-font-weight: bold");
+        labelResult.getStyleClass().add("section-label");
 
         Label labelVisualisasi = new Label("Visualisasi Pencarian Path");
-        labelVisualisasi.setStyle("-fx-font-size: 16px; -fx-font-weight: bold");
+        labelVisualisasi.getStyleClass().add("section-label");
         labelVisualisasi.setMaxWidth(Double.MAX_VALUE);
         labelVisualisasi.setAlignment(Pos.CENTER);
 
         // Footer
         Button btnBack = new Button("Back");
         btnBack.setAlignment(Pos.CENTER);
+        btnBack.getStyleClass().add("main-button");
 
         Button btnSave = new Button("Save");
         btnSave.setAlignment(Pos.CENTER);
         btnSave.setDisable(true);
+        btnSave.getStyleClass().add("main-button");
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -122,12 +142,15 @@ public class App extends Application {
 
         Label labelInfo = new Label();
         labelInfo.setAlignment(Pos.BASELINE_LEFT);
+        labelInfo.getStyleClass().add("info-label");
 
         // Layout
         VBox OutputUI = new VBox(10); // Jarak antar komponen adalah 10 pixel
         OutputUI.setPadding(new Insets(20)); // Margin dari tepi jendela
-        OutputUI.getChildren().addAll(judul, labelResult, labelInfo, labelVisualisasi, paginationWrapper, footerBox);
+        OutputUI.setStyle("-fx-background-color: #FFF0F6" + "-fx-text-fill: #ffff;");
+        OutputUI.getChildren().addAll(judulOutput, new Separator(), labelResult, labelInfo, labelVisualisasi, paginationWrapper, footerBox);
         Scene sceneOutput = new Scene(OutputUI, 800, 600);
+        sceneOutput.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         // Navigasi Back
         btnBack.setOnAction(e -> stage.setScene(sceneInput));

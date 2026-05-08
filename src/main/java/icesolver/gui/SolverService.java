@@ -19,19 +19,19 @@ public class SolverService {
 
         if (heuristic != null) {
             h = switch (heuristic) {
-                case "H1" -> new HeuristicManhattan();
-                case "H2" -> new HeuristicCheckpoint();
-                case "H3" -> new HeuristicAdvanced();
+                case "H1 : Heuristic Manhattan" -> new HeuristicManhattan();
+                case "H2 : Heuristic Checkpoint" -> new HeuristicCheckpoint();
+                case "H3 : Heuristic Advanced" -> new HeuristicAdvanced();
                 default -> h;
             };
         }
 
         // Pilihan algoritma
         solver = switch (algoritma) {
-            case "UCS" -> new UCSSolver();
-            case "GBFS" -> new GBFSSolver(h);
-            case "A*" -> new AStarSolver(h);
-            case "BFS" -> new BFSSolver();
+            case "Uniform Cost Search (UCS)" -> new UCSSolver();
+            case "Greedy Best First Searc (GBFS)" -> new GBFSSolver(h);
+            case "A Star (A*)" -> new AStarSolver(h);
+            case "Breadth First Search (BFS)" -> new BFSSolver();
             default -> null;
         };
 
