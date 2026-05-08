@@ -1,0 +1,30 @@
+=========== HASIL PENCARIAN ===========
+Algoritma : BFS
+Hasil pencarian jalur : R-D
+Total biaya : 6
+Jumlah iterasi : 5
+Waktu eksekusi : 36
+
+=========== VISUALISASI PENCARIAN ===========
+
+Initial
+XXXXXXX
+XZ***0X
+X*****X
+X****OX
+XXXXXXX
+
+Step 1 : R
+XXXXXXX
+X****ZX
+X*****X
+X****OX
+XXXXXXX
+
+Step 2 : D
+XXXXXXX
+X*****X
+X*****X
+X****ZX
+XXXXXXX
+

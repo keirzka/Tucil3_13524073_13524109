@@ -1,15 +1,25 @@
 package icesolver;
 
-import icesolver.heuristic.*;
-import icesolver.model.*;
-import icesolver.output.*;
-import icesolver.parser.*;
-import icesolver.solver.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Scanner;
+
+import icesolver.heuristic.Heuristic;
+import icesolver.heuristic.HeuristicAdvanced;
+import icesolver.heuristic.HeuristicCheckpoint;
+import icesolver.heuristic.HeuristicManhattan;
+import icesolver.model.Board;
+import icesolver.output.BoardPrinter;
+import icesolver.output.FileOutput;
+import icesolver.output.ResultPrinter;
+import icesolver.parser.InputParser;
+import icesolver.solver.AStarSolver;
+import icesolver.solver.BFSSolver;
+import icesolver.solver.GBFSSolver;
+import icesolver.solver.Solver;
+import icesolver.solver.UCSSolver;
 
 public class Main {
     public static void main(String args[]){

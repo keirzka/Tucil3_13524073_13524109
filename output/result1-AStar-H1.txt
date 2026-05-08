@@ -1,9 +1,10 @@
 =========== HASIL PENCARIAN ===========
-Algoritma : UCS
+Algoritma : A*
 Hasil pencarian jalur : D-R
 Total biaya : 4
-Jumlahi terasi : 4
-Waktu eksekusi : 38
+Jumlah iterasi : 4
+Waktu eksekusi : 22
+
 =========== VISUALISASI PENCARIAN ===========
 
 Initial

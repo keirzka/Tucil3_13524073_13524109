@@ -29,12 +29,15 @@ public class SolverService {
         // Pilihan algoritma
         solver = switch (algoritma) {
             case "Uniform Cost Search (UCS)" -> new UCSSolver();
-            case "Greedy Best First Searc (GBFS)" -> new GBFSSolver(h);
+            case "Greedy Best First Search (GBFS)" -> new GBFSSolver(h);
             case "A Star (A*)" -> new AStarSolver(h);
             case "Breadth First Search (BFS)" -> new BFSSolver();
             default -> null;
         };
 
+        if(solver == null) {
+            throw new NullPointerException("Solver gagal dibuat");
+        }
         // Jalankan solver
         return solver.selesaikan(papan);
     }
