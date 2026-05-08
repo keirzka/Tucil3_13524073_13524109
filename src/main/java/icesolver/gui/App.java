@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,7 +22,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 public class App extends Application {
 
@@ -161,7 +162,28 @@ public class App extends Application {
         final Solver.HasilSolusi[] lastResult = {null};
 
         btnSolver.setOnAction(e -> {
-            if(selectedPath[0] == null) return;
+            if(selectedPath[0] == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning!");
+                alert.setHeaderText(null);
+                alert.setContentText("Silakan pilih file konfigurasi (.txt) terlebih dahulu!");
+                alert.showAndWait();
+                return;
+            }
+
+            if (pilihanAlgoritma.getValue() == null || pilihanAlgoritma.getValue().equals("Pilih Algoritma")) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText("Silakan pilih jenis algoritma terlebih dahulu!");
+                alert.showAndWait();
+                return;
+            }
+
+            if (pilihanHeuristic.getValue() == null || pilihanHeuristic.getValue().equals("Pilih Heuristic")) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText("Silakan pilih jenis heuristic terlebih dahulu!");
+                alert.showAndWait();
+                return;
+            }
 
             try {
                 SolverService service =  new SolverService();
