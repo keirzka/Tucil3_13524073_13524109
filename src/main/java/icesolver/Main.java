@@ -172,7 +172,7 @@ public class Main {
             pathSave = "output/" + pathSave;
             try{
                 FileOutput fileOutput = new FileOutput();
-                fileOutput.simpanHasil(solver, result, pathSave);
+                fileOutput.simpanHasil(papanInput, solver, result, pathSave);
             } catch(IOException e) {
                 System.out.println("Gagal menyimpan file hasil pencarian");
                 e.printStackTrace();

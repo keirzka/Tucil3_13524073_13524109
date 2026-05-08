@@ -1,7 +1,7 @@
 # Variabel
 JAVAC = javac
 JAVA = java
-SRC_DIR = src
+SRC_DIR = src/main/java
 BIN_DIR = bin
 MAIN_CLASS = icesolver.Main
 

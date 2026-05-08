@@ -50,6 +50,11 @@ public final class Board {
         Position p = new Position(b, k);
         if (p.equals(posAktor)) return 'Z';
         Cell c = grid[b][k];
+
+        if(c == Cell.MULAI){
+            return '*';
+        }
+
         if (c.isCheckpoint() && c.indeksCheckpoint() < checkpointBerikutnya) return '*';
         return c.simbol;
     }

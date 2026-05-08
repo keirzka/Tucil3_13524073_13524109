@@ -1,0 +1,25 @@
+# --- Hasil Kompilasi ---
+target/
+bin/
+out/
+*.class
+*.jar
+*.war
+*.ear
+
+# --- Folder Konfigurasi IDE (IntelliJ) ---
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# --- Folder Konfigurasi IDE (VS Code) ---
+.vscode/
+
+# --- Log & Temp ---
+*.log
+tmp/
+
+# --- File Sistem ---
+.DS_Store
+Thumbs.db

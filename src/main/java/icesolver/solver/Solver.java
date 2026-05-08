@@ -20,7 +20,12 @@ public abstract class Solver {
         public String stringJalur() {
             if (jalur == null || jalur.isEmpty()) return "";
             StringBuilder sb = new StringBuilder();
-            for (Direction d : jalur) sb.append(d.simbol);
+            for (int i = 0; i < jalur.size(); i++) {
+                sb.append(jalur.get(i).simbol);
+                if(i < jalur.size() - 1){
+                    sb.append("-");
+                }
+            }
             return sb.toString();
         }
         public static HasilSolusi tidakAdaSolusi(int iterasi) {
