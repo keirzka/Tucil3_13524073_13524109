@@ -106,12 +106,12 @@ XXXXXXX
 ```
 
 Keterangan simbol: 
-* = path yang bisa dilewati 
-X = Rintangan/Batu. Aktor akan berhenti tepat sebelum batu.
-L = Lava. Melewati lava akan mengalami game over (Meskipun tidak berhenti tepat di lava).
-Z = Aktor/Pengguna
-O = Titik tujuan 
-<i> = Angka checkpoint
+* = path yang bisa dilewati   
+X = Rintangan/Batu. Aktor akan berhenti tepat sebelum batu.  
+L = Lava. Melewati lava akan mengalami game over (Meskipun tidak berhenti tepat di lava).  
+Z = Aktor/Pengguna  
+O = Titik tujuan   
+<i> = Angka checkpoint  
 
 ## Author
 Anggota 1
