@@ -105,7 +105,7 @@ XXXXXXX
 999 999 999 999 999 999 999  
 ```
 
-Keterangan simbol: 
+Keterangan simbol:   
 \* = path yang bisa dilewati   
 X = Rintangan/Batu. Aktor akan berhenti tepat sebelum batu.  
 L = Lava. Melewati lava akan mengalami game over (Meskipun tidak berhenti tepat di lava).  
