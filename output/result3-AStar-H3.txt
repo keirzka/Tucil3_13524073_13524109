@@ -1,9 +1,9 @@
 =========== HASIL PENCARIAN ===========
-Algoritma : BFS
+Algoritma : A*
 Hasil pencarian jalur : R-D-L-U-R-D
 Total biaya : 30
-Jumlah iterasi : 13
-Waktu eksekusi : 61
+Jumlah iterasi : 12
+Waktu eksekusi : 43
 
 =========== VISUALISASI PENCARIAN ===========
 

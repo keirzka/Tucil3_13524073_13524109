@@ -1,0 +1,30 @@
+=========== HASIL PENCARIAN ===========
+Algoritma : A*
+Hasil pencarian jalur : D-R
+Total biaya : 6
+Jumlah iterasi : 3
+Waktu eksekusi : 51
+
+=========== VISUALISASI PENCARIAN ===========
+
+Initial
+XXXXXXX
+XZ****X
+X*****X
+X****OX
+XXXXXXX
+
+Step 1 : D
+XXXXXXX
+X*****X
+X*****X
+XZ***OX
+XXXXXXX
+
+Step 2 : R
+XXXXXXX
+X*****X
+X*****X
+X****ZX
+XXXXXXX
+

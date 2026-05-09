@@ -1,9 +1,9 @@
 =========== HASIL PENCARIAN ===========
-Algoritma : BFS
-Hasil pencarian jalur : R-D-L-U-R-D
+Algoritma : GBFS
+Hasil pencarian jalur : R-L-D-R-U-D
 Total biaya : 30
-Jumlah iterasi : 13
-Waktu eksekusi : 61
+Jumlah iterasi : 7
+Waktu eksekusi : 59
 
 =========== VISUALISASI PENCARIAN ===========
 
@@ -25,39 +25,39 @@ X1*****2X
 X******OX
 XXXXXXXXX
 
-Step 2 : D
-XXXXXXXXX
-X*******X
-X*******X
-X*******X
-X1*****2X
-X******ZX
-XXXXXXXXX
-
-Step 3 : L
-XXXXXXXXX
-X*******X
-X*******X
-X*******X
-X1*****2X
-XZ*****OX
-XXXXXXXXX
-
-Step 4 : U
+Step 2 : L
 XXXXXXXXX
 XZ******X
 X*******X
 X*******X
-X******2X
+X1*****2X
 X******OX
 XXXXXXXXX
 
-Step 5 : R
+Step 3 : D
+XXXXXXXXX
+X*******X
+X*******X
+X*******X
+X******2X
+XZ*****OX
+XXXXXXXXX
+
+Step 4 : R
+XXXXXXXXX
+X*******X
+X*******X
+X*******X
+X******2X
+X******ZX
+XXXXXXXXX
+
+Step 5 : U
 XXXXXXXXX
 X******ZX
 X*******X
 X*******X
-X******2X
+X*******X
 X******OX
 XXXXXXXXX
 

@@ -1,0 +1,63 @@
+=========== HASIL PENCARIAN ===========
+Algoritma : GBFS
+Hasil pencarian jalur : U-D-R-U-R
+Total biaya : 68
+Jumlah iterasi : 6
+Waktu eksekusi : 36
+
+=========== VISUALISASI PENCARIAN ===========
+
+Initial
+XXXXXXX
+X0****X
+X**X**X
+X****OX
+X1***LX
+XZ**X*X
+XXXXXXX
+
+Step 1 : U
+XXXXXXX
+XZ****X
+X**X**X
+X****OX
+X1***LX
+X***X*X
+XXXXXXX
+
+Step 2 : D
+XXXXXXX
+X*****X
+X**X**X
+X****OX
+X****LX
+XZ**X*X
+XXXXXXX
+
+Step 3 : R
+XXXXXXX
+X*****X
+X**X**X
+X****OX
+X****LX
+X**ZX*X
+XXXXXXX
+
+Step 4 : U
+XXXXXXX
+X*****X
+X**X**X
+X**Z*OX
+X****LX
+X***X*X
+XXXXXXX
+
+Step 5 : R
+XXXXXXX
+X*****X
+X**X**X
+X****ZX
+X****LX
+X***X*X
+XXXXXXX
+
